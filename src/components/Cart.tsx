@@ -4,7 +4,7 @@ import ProductDisplay from './ProductDisplay';
 
 interface Props {
   products: Product[],
-  total: number,
+  total: string,
   onCheckoutClicked: () => void
 }
 
@@ -15,6 +15,7 @@ const Cart = ({ products, total, onCheckoutClicked }: Props) => {
       <ProductDisplay
         product={product}
         key={product.id}
+        quantity={product.quantity}
       />
     )
   ) : (

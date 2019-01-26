@@ -2,12 +2,13 @@ import React from 'react';
 import { Product } from '../models/product.model';
 
 interface Props {
-  product: Product
+  product: Product,
+  quantity?: number
 }
 
-const ProductDisplay = ({ product: { price, title, inventory } }: Props ) => (
+const ProductDisplay = ({ product: { price, title }, quantity }: Props ) => (
   <div>
-    {title} - &#36;{price}{inventory ? ` x ${inventory}` : null}
+    {title} - &#36;{price}{quantity ? ` x ${quantity}` : null}
   </div>
 );
 

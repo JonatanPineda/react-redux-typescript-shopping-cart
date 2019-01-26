@@ -3,24 +3,23 @@ import { Product } from '../models/product.model';
 import ProductItem from './ProductItem';
 
 interface Props {
-  title: string,
   products: Product[],
-  addToCart: (idProduct: number) => void
+  onAddToCartClicked: (idProduct: number) => void
 }
 
-const Products = ({ title, products, addToCart }: Props) => (
+const ProductsList = ({ products, onAddToCartClicked }: Props) => (
   <div>
-    <h3>{title}</h3>
+    <h3>Products</h3>
     <div>
       {products.map(product => 
         <ProductItem 
           key={product.id}
           product={product}
-          onAddToCartClicked={() => addToCart(product.id)}
+          onAddToCartClicked={() => onAddToCartClicked(product.id)}
         />
       )}
     </div>
   </div>
 );
 
-export default Products;
+export default ProductsList;
