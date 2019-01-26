@@ -1,21 +1,21 @@
+import { EpicDependencies } from './EpicDependencies';
 import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 import { map, switchMap } from 'rxjs/operators';
 import { from }  from 'rxjs';
-import * as fromProducts from '../actions/products.action';
+import * as fromCart from '../actions/cart.action';
 import * as fromReducer from '../reducers';
-import { EpicDependencies } from './EpicDependencies';
 
 
 export const loadProductsEpic = (
-  action$: ActionsObservable<fromProducts.ProductsAction>,
+  action$: ActionsObservable<fromCart.CartAction>,
   state$: StateObservable<fromReducer.State>,
   { shopService }: EpicDependencies
 ) => 
 action$.pipe(
-  ofType(fromProducts.LOAD_PRODUCTS),
+  ofType(fromCart.REQUEST_CHECKOUT),
   switchMap(() => {
-    return from(shopService.getProducts()).pipe(
-      map(products => new fromProducts.LoadProductsSuccess(products))
+    return from(shopService.buyProducts()).pipe(
+      map(() => new fromCart.RequestCheckoutSuccess())
     )
   })
 );

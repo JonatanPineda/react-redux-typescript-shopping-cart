@@ -9,6 +9,11 @@ export const getCartState = createSelector(
   (state: fromState.State) => state.cart
 );
 
+export const getIsRequestingCheckout = createSelector(
+  getCartState,
+  fromCart.getIsRequestingCheckout
+)
+
 export const getAddedIds = createSelector(
   getCartState,
   fromCart.getAddedIds

@@ -17,3 +17,7 @@ export const getProductsEntities = createSelector(
   fromProducts.getProductsEntities
 );
 
+export const getProductsLoading = createSelector(
+  getProductsState,
+  fromProducts.getProductsLoading
+);

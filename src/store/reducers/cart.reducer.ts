@@ -1,11 +1,15 @@
 import * as fromActions from '../actions';
-import { Cart } from '../../models/cart.model';
 
-export interface CartState extends Cart {}
+export interface CartState {
+  addedIds: number[],
+  quantityById: { [id: number]: number  },
+  isRequestingCheckout: boolean
+}
 
 const initialState: CartState = {
   addedIds: [],
-  quantityById: {}
+  quantityById: {},
+  isRequestingCheckout: false
 }
 
 export const reducer = (
@@ -13,6 +17,12 @@ export const reducer = (
   action: fromActions.CartAction
 ): CartState => {
   switch(action.type) {
+    case fromActions.REQUEST_CHECKOUT: {
+      return {
+        ...state,
+        isRequestingCheckout: true
+      }
+    }
     case fromActions.ADD_TO_CART: {
       const productId = action.payload
       return {
@@ -35,3 +45,4 @@ export const reducer = (
 
 export const getQuantity = (state: CartState, productId: number) => state.quantityById[productId] || 0;
 export const getAddedIds = (state: CartState) => state.addedIds;
+export const getIsRequestingCheckout = (state: CartState) => state.isRequestingCheckout;
