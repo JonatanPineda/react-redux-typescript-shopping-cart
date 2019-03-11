@@ -2,22 +2,17 @@ import { createSelector } from 'reselect';
 import * as fromState from '../reducers';
 import * as fromProducts from '../reducers/products.reducer';
 
-export const getProductsState = createSelector(
-  fromState.getState,
-  (state: fromState.State) => state.products
-);
-
 export const getAllProducts = createSelector(
-  getProductsState,
+  fromState.getProductsState,
   fromProducts.getAllProducts
 );
 
 export const getProductsEntities = createSelector(
-  getProductsState,
+  fromState.getProductsState,
   fromProducts.getProductsEntities
 );
 
 export const getProductsLoading = createSelector(
-  getProductsState,
+  fromState.getProductsState,
   fromProducts.getProductsLoading
 );

@@ -5,7 +5,6 @@ import * as fromProducts from '../actions/products.action';
 import * as fromReducer from '../reducers';
 import { EpicDependencies } from './EpicDependencies';
 
-
 export const loadProductsEpic = (
   action$: ActionsObservable<fromProducts.ProductsAction>,
   state$: StateObservable<fromReducer.State>,

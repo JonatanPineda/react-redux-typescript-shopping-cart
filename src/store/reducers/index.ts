@@ -12,4 +12,5 @@ export const reducers = combineReducers<State>({
   cart: fromCart.reducer
 });
 
-export const getState = (state: State) => state;
+export const getProductsState = (state: State) => state.products;
+export const getCartState = (state: State) => state.cart;

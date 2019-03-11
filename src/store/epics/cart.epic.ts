@@ -5,7 +5,6 @@ import { from }  from 'rxjs';
 import * as fromCart from '../actions/cart.action';
 import * as fromReducer from '../reducers';
 
-
 export const loadProductsEpic = (
   action$: ActionsObservable<fromCart.CartAction>,
   state$: StateObservable<fromReducer.State>,

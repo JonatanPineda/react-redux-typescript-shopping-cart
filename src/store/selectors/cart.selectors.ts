@@ -1,21 +1,15 @@
-import { CartState } from './../reducers/cart.reducer';
 import { createSelector } from 'reselect';
 import * as fromState from '../reducers';
 import * as fromCart from '../reducers/cart.reducer';
 import * as fromProducts from './products.selectors';
 
-export const getCartState = createSelector(
-  fromState.getState,
-  (state: fromState.State) => state.cart
-);
-
 export const getIsRequestingCheckout = createSelector(
-  getCartState,
+  fromState.getCartState,
   fromCart.getIsRequestingCheckout
 )
 
 export const getAddedIds = createSelector(
-  getCartState,
+  fromState.getCartState,
   fromCart.getAddedIds
 );
 

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import ProductsList from '../components/ProductsList';
 
 const mapStateToProps = (state: fromStore.State) => ({
-  products: fromStore.getAllProducts(state)
+  products: fromStore.getAllProducts(state),
+  isProductsLoading: fromStore.getProductsLoading(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<fromStore.CartAction>) => ({
